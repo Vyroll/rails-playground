@@ -1,0 +1,9 @@
+Layout/EndOfLine:
+  EnforcedStyle: lf
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
