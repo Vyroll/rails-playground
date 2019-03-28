@@ -3,6 +3,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+# faker for seeding placeholder data
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+# bootstrap
+gem 'bootstrap', '~> 4.3.1'
+gem 'sprockets'
+gem 'jquery-rails'
+# font awesome
+gem "font-awesome-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 # Use sqlite3 as the database for Active Record

@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This site main purpose is to improve and showcase my Ruby on Rails skills. Site will continuously change as I learn and develop my understanding of this framework.
 
-Things you may want to cover:
+TODO:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- [x] RoR beginners guide
+- [x] Routing
+- [x] Basic styling
+- [ ] Proper Authentication
+- [ ] Active Record
+- [ ] ...

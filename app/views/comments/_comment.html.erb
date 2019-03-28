@@ -1,13 +1,10 @@
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<div class="border-bottom">
+  <p class="mb-0">
+    <span class="font-weight-bold"><%= comment.commenter %></span>
+    <span class="text-muted"><%= comment.created_at %></span>
+    <span><%= link_to fa_icon("trash"), [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"text-reset" %></span>
+  </p>
+  <p>
+    <%= comment.body %>
+  </p>
+</div>

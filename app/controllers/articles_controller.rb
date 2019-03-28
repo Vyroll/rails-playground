@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with  name: 'dhh',
-                                password: 'secret',
-                                except: [:index, :show]
+  # http_basic_authenticate_with  name: 'dhh',
+  #                               password: 'secret',
+  #                               except: [:index, :show]
 
   def index
     @articles = Article.all
@@ -42,6 +42,11 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article
     else
+      if @article.errors.any?
+        @article.errors.full_messages.each do |msg|
+          flash.now[:danger] = msg
+        end
+      end
       render 'new'
     end
   end

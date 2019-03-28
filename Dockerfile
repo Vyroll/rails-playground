@@ -1,5 +1,7 @@
 FROM ruby:2.5
-RUN apt-get update -qq && apt-get install -y nodejs sqlite3
+RUN apt-get update -qq && apt-get install -y sqlite3
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
+    && apt-get install -y nodejs
 RUN mkdir /playground
 WORKDIR /playground
 ADD Gemfile /playground/Gemfile
