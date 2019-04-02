@@ -1,8 +1,10 @@
 <div class="border-bottom">
   <p class="mb-0">
-    <span class="font-weight-bold"><%= comment.commenter %></span>
+    <span class="font-weight-bold"><%= comment.user.email %></span>
     <span class="text-muted"><%= comment.created_at %></span>
+    <% if comment.user == current_user %>
     <span><%= link_to fa_icon("trash"), [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class:"text-reset" %></span>
+    <% end %>
   </p>
   <p>
     <%= comment.body %>

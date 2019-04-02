@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+# devise for authentication`
+gem 'devise'
 # faker for seeding placeholder data
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 # bootstrap

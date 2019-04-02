@@ -1,32 +1,35 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xl-6">
-      <h1>Listing articles</h1>
-      <table class="table table-sm">
-        <tr>
-          <th>Title</th>
-          <th>Text</th>
-          <th>Date</th>
-          <th colspan="3"></th>
-        </tr>
-        <% @articles.each do |article| %>
-          <tr>
-            <td><%= article.title %></td>
-            <td><%= article.text[0..120] %></td>
-            <td>
-              <% if article.created_at == article.updated_at %>
-                <span><%= article.created_at %></span>
-              <% else %>
-                <span data-toggle="tooltip" title="<%= "Updated: #{article.created_at}" %>" ><u><%= article.created_at %></u></span>
-              <% end %>
-            </td>
-            <td><%= link_to fa_icon("search"), article_path(article) %></td>
-            <td><%= link_to fa_icon("edit"), edit_article_path(article) %></td>
-            <td><%= link_to fa_icon("trash"), article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </table>
-      <%= link_to 'New article', new_article_path, class:"btn btn-primary float-sm-right" %>
+<div class="row">
+  <div class="col-12">
+    <h1>Listing articles</h1>
+    <div class="d-flex justify-content-end mb-3">
+      <%= link_to 'New article', new_article_path, class:"btn btn-primary" %>
     </div>
+    <table class="table table-sm">
+      <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th>Creator</th>
+        <th>Date</th>
+        <th colspan="3"></th>
+      </tr>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.text[0..120] %></td>
+          <td><%= article.user.email %></td>
+          <td>
+            <% if article.created_at == article.updated_at %>
+            <span><%= article.created_at %></span>
+            <% else %>
+            <span data-toggle="tooltip" title="<%= "Updated: #{article.created_at}" %>" ><u><%= article.created_at %></u></span>
+            <% end %>
+          </td>
+          <td><%= link_to fa_icon("search"), article_path(article) %></td>
+          <% isOwner = (article.user == current_user) %>
+          <td><% if isOwner %><%= link_to fa_icon("edit"), edit_article_path(article) %><% end %></td>
+          <td><% if isOwner %><%= link_to fa_icon("trash"), article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 </div>

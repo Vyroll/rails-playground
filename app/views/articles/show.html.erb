@@ -1,21 +1,32 @@
-<div class="container">
-  <p class="mb-0">
-    <%= link_to fa_icon("edit"), edit_article_path(@article) %>
-    <%= link_to fa_icon("trash"), article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-  <h1>Title: <%= @article.title %></h1>
-  <p>
-    <strong>Text:</strong>
-    <%= @article.text %>
-  </p>
+<% if @article.user == current_user %>
+<p class="mb-0">
+  <%= link_to fa_icon("edit"), edit_article_path(@article) %>
+  <%= link_to fa_icon("trash"), article_path(@article), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+<% end %>
+<h1>Title: <%= @article.title %></h1>
+<span class="font-weight-bold"><%= @article.user.email %></span>
+<% if @article.created_at == @article.updated_at %>
+<span class="text-muted"><%= @article.created_at %></span>
+<% else %>
+<span class="text-muted" data-toggle="tooltip" title="<%= "Updated: #{@article.created_at}" %>" ><u><%= @article.created_at %></u></span>
+<% end %>
 
-  <h2>Comments:</h2>
-  <%= render @article.comments %>
-  
-  <div class="row mt-3">
-    <div class="col-md-6">
-      <h2>Add a comment:</h2>
-      <%= render 'comments/form' %>
-    </div>
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<h2>Comments:</h2>
+<% if !@article.comments.blank? %>
+<%= render @article.comments %>
+<% else %>
+<p>Thera are no comments, be the first one.</p>
+<% end %>
+
+<div class="row mt-3">
+  <div class="col-md-6">
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
   </div>
 </div>

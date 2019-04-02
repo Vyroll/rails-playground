@@ -1,5 +1,4 @@
-<div class="container">
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-#{name}" %>
-  <% end %>
-</div>
+<% flash.each do |name, msg| %>
+  <% name = (['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'].include? name) ? name : 'primary' %>
+  <%= content_tag :div, msg, class: "alert alert-#{name} " %>
+<% end %>

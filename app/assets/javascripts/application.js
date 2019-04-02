@@ -18,6 +18,6 @@
 //= require popper
 //= require bootstrap-sprockets
 
-$(function () {
+$(document).on('turbolinks:load',()=>{
   $('[data-toggle="tooltip"]').tooltip()
 })
