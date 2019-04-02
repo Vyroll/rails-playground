@@ -7,6 +7,6 @@ TODO:
 - [x] RoR beginners guide
 - [x] Routing
 - [x] Basic styling
-- [ ] Proper Authentication
+- [x] Proper Authentication
 - [ ] Active Record
 - [ ] ...
